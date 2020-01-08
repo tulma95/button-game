@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import axios from 'axios'
+import buttonService from './services/button'
 import { Button, Form } from 'semantic-ui-react'
 
 
@@ -9,16 +9,16 @@ const App = () => {
   const [button, setButton] = useState()
 
   useEffect(() => {
-    const getButton = async () => {
-      const button = await axios.get('/api/button')
-      setButton(button.data)
+    const getPlayButton = async () => {
+      setButton(await buttonService.getPlayButton())
     }
-    getButton()
+    getPlayButton()
   }, [])
 
   const PlayButton = ({ button, setButton }) => {
 
     const handleclick = (button) => {
+      console.log(button);
       const newButton = { ...button, clicks: button.clicks + 1 }
       setButton(newButton)
     }
