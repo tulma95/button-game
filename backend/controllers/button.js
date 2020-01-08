@@ -13,11 +13,8 @@ buttonRouter.get('/', async (req, res) => {
 })
 
 buttonRouter.put('/', async (req, res) => {
-  const { id } = req.body
-
   try {
-    const playerInDb = await Player.findById({ _id: id })
-
+    const playerInDb = await Player.findById(req.body.id)
     if (playerInDb.points < 0) {
       res.json({ error: 'not enough points' })
     }
@@ -35,21 +32,22 @@ buttonRouter.put('/', async (req, res) => {
     const newPlayerPoints = pointsGained + playerInDb.points - 1
 
     const newPlayer = {
-      id,
+      id: playerInDb.id,
       points: newPlayerPoints,
       playername: playerInDb.playername
     }
 
-    await Player.findByIdAndUpdate(id, newPlayer)
+    await Player.findByIdAndUpdate(req.body.id, newPlayer)
 
     const clicksForNextPoints = 10 - (clicks % 10)
-    console.log(clicks);
     return res.status(200).json({
       clicksForNextPoints,
-      pointsGained
+      pointsGained,
+      currentPoints: newPlayerPoints
     })
 
   } catch (error) {
+    console.log(error);
     return res.json(error)
   }
 })
