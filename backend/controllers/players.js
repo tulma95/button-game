@@ -11,15 +11,25 @@ playersRouter.get('/', async (req, res) => {
 })
 
 playersRouter.post('/', async (req, res) => {
-  const { playername, points } = req.body
 
+  const { playername } = req.body
+  console.log(playername);
   const player = new Player({
     playername,
-    points
+    points: 20
   })
   try {
-    const savedPlayer = await player.save()
-    return res.status(201).json(savedPlayer.toJSON())
+    const playerInDb = await Player.findOne({
+      playername
+    })
+
+    if (playerInDb) {
+      return res.status(201).json(playerInDb.toJSON())
+    } else {
+      const newPlayer = await player.save()
+      return res.status(201).json(newPlayer.toJSON())
+    }
+
   } catch (error) {
     console.log(error);
     return res.end()

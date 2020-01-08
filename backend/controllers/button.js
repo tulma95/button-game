@@ -50,7 +50,7 @@ buttonRouter.put('/', async (req, res) => {
     })
 
   } catch (error) {
-    return res.end()
+    return res.json(error)
   }
 })
 
