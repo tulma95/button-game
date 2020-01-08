@@ -1,0 +1,19 @@
+.playButton {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.buttonText {
+  line-height: 100px;
+}
+
+.container {
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  text-align: center;
+}
