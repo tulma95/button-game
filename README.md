@@ -1,6 +1,8 @@
 # Button game
 Button game is a simple game where you have to click the button to gain points. Each time you click the button you lose point but you have a chance to win more, depending on how many times the button has been clicked. If your points drop down to 0 you lose.
 
+Application frontend is made with React and backend with node.js. Player points and button clicks are saved in mongodb.
+
 ## Heroku
 Application runs in heroku and database is in Atlas mongoDb cloud.
 
