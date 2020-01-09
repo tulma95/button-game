@@ -8,7 +8,7 @@ const getPlayButton = async () => {
 }
 
 const clickButton = async (user, button) => {
-  const response = await axios.put(`${baseUrl}/${button.id}`, user)
+  const response = await axios.put(`${baseUrl}/click/${button.id}`, user)
   return response.data
 }
 

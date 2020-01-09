@@ -8,7 +8,7 @@ buttonRouter.get('/', async (req, res) => {
   return res.status(200).json(button.toJSON())
 })
 
-buttonRouter.put('/:id', async (req, res) => {
+buttonRouter.put('/click/:id', async (req, res) => {
   try {
 
     const playerInDb = await Player.findById(req.body.id)
