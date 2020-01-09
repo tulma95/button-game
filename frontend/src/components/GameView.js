@@ -3,7 +3,7 @@ import HelpScreen from './HelpScreen'
 import GameScreen from './GameScreen'
 
 const GameView = ({ player, setPlayer, button }) => {
-  const [showHelp, setShowHelp] = useState(true)
+  const [showHelp, setShowHelp] = useState(false)
 
   return (
     <div className='gameView'>

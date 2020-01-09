@@ -5,11 +5,7 @@ import GameView from './components/GameView';
 import buttonService from './services/button'
 
 const App = () => {
-  const [player, setPlayer] = useState({
-    playername: "pentti",
-    points: 0,
-    id: "5e165053d73c1f28808aa993"
-  })
+  const [player, setPlayer] = useState()
   const [button, setButton] = useState()
 
   useEffect(() => {
