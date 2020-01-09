@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "nodemon backend",
-    "dev": "start npm run watch && cd frontend && start npm start"
+    "dev": "start npm run watch && cd frontend && start npm start",
+    "build": "cd frontend/ && npm install && npm run build",
+    "start": "node backend/"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +24,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
-  }
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "react-ui/node_modules"
+  ]
 }
