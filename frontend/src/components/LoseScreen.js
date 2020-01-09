@@ -3,7 +3,6 @@ import playerService from '../services/player'
 
 
 const LoseScreen = ({ player, setPlayer, setMessage }) => {
-
   setMessage('You lost. Press reset to gain 20 points')
 
   const handleReset = async (player) => {
@@ -15,11 +14,10 @@ const LoseScreen = ({ player, setPlayer, setMessage }) => {
   const handleClickback = () => {
     setPlayer(null)
   }
-
   return (
     <div>
-      <button onClick={() => handleReset(player)}>reset</button>
-      <button onClick={handleClickback}>Back to login</button>
+      <button className='resetButton' onClick={() => handleReset(player)}>reset</button>
+      <button className='backButton' onClick={handleClickback}>Back to login</button>
     </div>
   )
 }

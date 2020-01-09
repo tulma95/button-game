@@ -1,32 +1,30 @@
 import React, { useState } from 'react'
-import PlayerInfo from './PlayerInfo'
-import PlayButton from './PlayButton'
-import LoseScreen from './LoseScreen'
+import HelpScreen from './HelpScreen'
+import GameScreen from './GameScreen'
 
 const GameView = ({ player, setPlayer, button }) => {
-  const [message, setMessage] = useState('Press button to play')
+  const [showHelp, setShowHelp] = useState(true)
 
   return (
     <div className='gameView'>
-      <PlayerInfo player={player} />
-      {player.points <= 0 ?
+      <div className='gameViewHeader'>
+        <div className='title'>Button Game</div>
+        <div onClick={() => setShowHelp(!showHelp)} className='helpButton'>?</div>
+        <div onClick={() => setPlayer(null)} className='exitButton'></div>
+      </div>
 
-        < LoseScreen player={player}
+      {showHelp ?
+        <HelpScreen
+          setShowHelp={setShowHelp} />
+
+        : <GameScreen
+          player={player}
           setPlayer={setPlayer}
-          setMessage={setMessage} />
-        :
-        <PlayButton player={player}
-          setPlayer={setPlayer}
-          setMessage={setMessage}
-          button={button}
-        />
+          button={button} />
       }
-      {message &&
-        <div className='message'>
-          {message}
-        </div>
-      }
-    </div>
+
+
+    </div >
   )
 }
 

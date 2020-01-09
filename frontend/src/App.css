@@ -11,7 +11,15 @@
   transition: none;
   -webkit-transition: -webkit-box-shadow .2s ease-in-out;
   background: radial-gradient(circle at 100px 100px, #f32a2a, black);
+}
 
+.resetButton,
+.backButton {
+  margin: 5px;
+  position: relative;
+  top: 185px;
+  left: 95px;
+  user-select: none;
 }
 
 .playButton:hover {
@@ -21,13 +29,6 @@
 .playButton:active {
   box-shadow: none;
   transform: translate(4px, 4px);
-}
-
-.playButston:active {
-  background-color: #8e3e3e;
-  box-shadow: none;
-  transform: translateY(10px);
-
 }
 
 .buttonText {
@@ -40,10 +41,66 @@
 }
 
 .gameView {
-  background-color: aqua;
+  background-color: rgb(198, 198, 198);
   width: 400px;
   height: 100%;
   justify-content: center;
+  box-shadow: 2px 2px 2px black;
+  border: 3px solid rgb(198, 198, 198);
+}
+
+.gameViewHeader {
+  width: 100%;
+  background-color: blue;
+  height: 20px;
+  display: inline-flex;
+}
+
+.title {
+  user-select: none;
+  position: relative;
+  left: 5px;
+  font-size: 16px;
+  color: white;
+}
+
+.exitButton {
+  position: relative;
+  top: 2px;
+  left: 265px;
+  width: 15px;
+  height: 15px;
+  background-color: rgb(198, 198, 198);
+}
+
+.helpButton {
+  line-height: 15px;
+  font-size: 15px;
+  position: relative;
+  top: 2px;
+  left: 260px;
+  width: 15px;
+  height: 15px;
+  background-color: rgb(198, 198, 198);
+  user-select: none;
+}
+
+.exitButton:before,
+.exitButton:after {
+  position: absolute;
+  left: 7px;
+  content: ' ';
+  height: 16px;
+  width: 2px;
+  background-color: black;
+}
+
+.exitButton:before {
+  transform: rotate(45deg);
+}
+
+.exitButton:after {
+  transform: rotate(-45deg);
 }
 
 .message {
@@ -66,4 +123,9 @@
 
 .playerInfo {
   line-height: 50px;
+}
+
+.instructions {
+  margin: 15px;
+  font-size: 15px;
 }
