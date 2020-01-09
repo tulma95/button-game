@@ -17,7 +17,8 @@ buttonRouter.put('/click/:id', async (req, res) => {
     }
 
     const updatedButton = await Button.findByIdAndUpdate(req.params.id, { $inc: { clicks: 1 } }, {
-      new: true
+      new: true,
+      useFindAndModify: false
     })
 
     const pointsGained = calculatePoints(updatedButton.clicks)
@@ -30,15 +31,16 @@ buttonRouter.put('/click/:id', async (req, res) => {
       playername: playerInDb.playername
     }
 
-    const updatedPlayer = await Player.findByIdAndUpdate(playerToSave.id, playerToSave, {
-      new: true
+    const savedPlayer = await Player.findByIdAndUpdate(playerToSave.id, playerToSave, {
+      new: true,
+      useFindAndModify: false
     })
 
     const clicksForNextPoints = 10 - (updatedButton.clicks % 10)
     const response = {
       clicksForNextPoints,
       pointsGained,
-      currentPoints: updatedPlayer.points
+      currentPoints: savedPlayer.points
     }
     return res.status(200).json(response)
 

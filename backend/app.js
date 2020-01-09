@@ -10,7 +10,8 @@ require('dotenv').config()
 app.use(cors())
 
 mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 }).catch(error => console.log(error))
 
 mongoose.set('useCreateIndex', true)

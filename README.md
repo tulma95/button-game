@@ -7,9 +7,10 @@ Clone the repository
 git clone https://github.com/tulma95/button-game
 ```
 
-Move to repository and build project
+Move to repository install dependencies and build project
 ```
 cd button-game
+npm install
 npm run build
 ```
 
