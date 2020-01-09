@@ -20,6 +20,8 @@
   top: 185px;
   left: 95px;
   user-select: none;
+  box-shadow: 1px 1px 1px black;
+  background: linear-gradient(135deg, rgb(215, 215, 215) 10%, rgb(198, 198, 198) 100%);
 }
 
 .playButton:hover {
@@ -47,6 +49,7 @@
   justify-content: center;
   box-shadow: 2px 2px 2px black;
   border: 3px solid rgb(198, 198, 198);
+  background: linear-gradient(135deg, rgb(215, 215, 215) 10%, rgb(198, 198, 198) 100%);
 }
 
 .gameViewHeader {
@@ -64,25 +67,35 @@
   color: white;
 }
 
+.helpButton:active,
+.exitButton:active {
+  transform: translate(1px, 1px);
+}
+
+.helpButton,
 .exitButton {
-  position: relative;
+  background-color: rgb(198, 198, 198);
   top: 2px;
-  left: 265px;
+  position: relative;
   width: 15px;
   height: 15px;
-  background-color: rgb(198, 198, 198);
+  box-shadow: 1, 1, 1 black;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px black;
+  background: linear-gradient(135deg, rgb(215, 215, 215) 10%, rgb(198, 198, 198) 100%);
 }
 
 .helpButton {
   line-height: 15px;
   font-size: 15px;
-  position: relative;
-  top: 2px;
   left: 260px;
   width: 15px;
   height: 15px;
-  background-color: rgb(198, 198, 198);
   user-select: none;
+}
+
+.exitButton {
+  left: 265px;
 }
 
 .exitButton:before,
