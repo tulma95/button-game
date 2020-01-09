@@ -10,8 +10,18 @@ playersRouter.get('/', async (req, res) => {
   }
 })
 
-playersRouter.post('/', async (req, res) => {
+playersRouter.put('/reset', async (req, res) => {
+  const player = req.body
+  const newPlayerData = { ...player, points: 20 }
 
+  const updatedPlayer = await Player.findByIdAndUpdate(player.id, newPlayerData, {
+    new: true
+  })
+
+  res.json(updatedPlayer)
+})
+
+playersRouter.post('/', async (req, res) => {
   const { playername } = req.body
   const player = new Player({
     playername,

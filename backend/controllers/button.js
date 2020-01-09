@@ -2,6 +2,7 @@ const buttonRouter = require('express').Router()
 const Button = require('../models/button')
 const Player = require('../models/player')
 
+
 buttonRouter.get('/:id', async (req, res) => {
   const id = req.params.id
   return res.send('moi')
@@ -12,39 +13,39 @@ buttonRouter.get('/', async (req, res) => {
   return res.json(button.toJSON())
 })
 
-buttonRouter.put('/', async (req, res) => {
+buttonRouter.put('/:id', async (req, res) => {
   try {
+
     const playerInDb = await Player.findById(req.body.id)
     if (playerInDb.points < 0) {
       res.json({ error: 'not enough points' })
     }
 
-    const button = (await Button.findOne({})).toJSON()
-    const updatedButton = { ...button, clicks: button.clicks + 1 }
-
-    const returnButton = await Button.findByIdAndUpdate(updatedButton.id, updatedButton, {
+    const updatedButton = await Button.findByIdAndUpdate(req.params.id, { $inc: { clicks: 1 } }, {
       new: true
     })
 
-    const { clicks } = returnButton
+    const pointsGained = calculatePoints(updatedButton.clicks)
 
-    const pointsGained = calculatePoints(clicks)
-    const newPlayerPoints = pointsGained + playerInDb.points - 1
+    const updatedPlayerPoints = playerInDb.points + pointsGained + - 1
 
-    const newPlayer = {
+    const playerToSave = {
       id: playerInDb.id,
-      points: newPlayerPoints,
+      points: updatedPlayerPoints,
       playername: playerInDb.playername
     }
 
-    await Player.findByIdAndUpdate(req.body.id, newPlayer)
+    const updatedPlayer = await Player.findByIdAndUpdate(playerToSave.id, playerToSave, {
+      new: true
+    })
 
-    const clicksForNextPoints = 10 - (clicks % 10)
-    return res.status(200).json({
+    const clicksForNextPoints = 10 - (updatedButton.clicks % 10)
+    const response = {
       clicksForNextPoints,
       pointsGained,
-      currentPoints: newPlayerPoints
-    })
+      currentPoints: updatedPlayer.points
+    }
+    return res.status(200).json(response)
 
   } catch (error) {
     console.log(error);

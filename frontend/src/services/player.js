@@ -7,5 +7,10 @@ const login = async (playername) => {
   return res.data
 }
 
+const resetPlayerPoints = async (player) => {
+  const res = await axios.put(`${baseUrl}/reset`, player)
+  return res.data
+}
 
-export default { login }
+
+export default { login, resetPlayerPoints }

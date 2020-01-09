@@ -21,9 +21,6 @@
 .playButton:active {
   box-shadow: none;
   transform: translate(4px, 4px);
-
-
-
 }
 
 .playButston:active {
@@ -45,7 +42,8 @@
 .gameView {
   background-color: aqua;
   width: 400px;
-
+  height: 100%;
+  justify-content: center;
 }
 
 .message {
