@@ -1,15 +1,6 @@
 const playersRouter = require('express').Router()
 const Player = require('../models/player')
 
-playersRouter.get('/', async (req, res) => {
-  try {
-    const players = await Player.find({})
-    res.status(200).json(players.map(player => player.toJSON()))
-  } catch (error) {
-    console.log(error);
-  }
-})
-
 playersRouter.put('/reset', async (req, res) => {
   const player = req.body
   const newPlayerData = { ...player, points: 20 }
@@ -18,7 +9,7 @@ playersRouter.put('/reset', async (req, res) => {
     new: true
   })
 
-  res.json(updatedPlayer)
+  res.status(200).json(updatedPlayer)
 })
 
 playersRouter.post('/', async (req, res) => {

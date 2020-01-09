@@ -5,9 +5,9 @@ const buttonRouter = require('./controllers/button')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const cors = require('cors')
-app.use(cors())
 require('dotenv').config()
 
+app.use(cors())
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true

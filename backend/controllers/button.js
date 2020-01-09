@@ -3,14 +3,9 @@ const Button = require('../models/button')
 const Player = require('../models/player')
 
 
-buttonRouter.get('/:id', async (req, res) => {
-  const id = req.params.id
-  return res.send('moi')
-})
-
 buttonRouter.get('/', async (req, res) => {
   const button = await Button.findOne({})
-  return res.json(button.toJSON())
+  return res.status(200).json(button.toJSON())
 })
 
 buttonRouter.put('/:id', async (req, res) => {

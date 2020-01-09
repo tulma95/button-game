@@ -9,6 +9,7 @@ const buttonSchema = mongoose.Schema({
 buttonSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = document._id.toString()
+    delete returnedObject.clicks
     delete returnedObject._id
     delete returnedObject.__v
   }
