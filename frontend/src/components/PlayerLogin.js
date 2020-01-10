@@ -4,6 +4,7 @@ import { Button, Form } from 'semantic-ui-react'
 
 const PlayerLogin = ({ setPlayer }) => {
   const [inputValue, setInputvalue] = useState('')
+  const [errorMessage, setError] = useState('')
 
   const handleChange = (event) => {
     setInputvalue(event.target.value)
@@ -12,6 +13,12 @@ const PlayerLogin = ({ setPlayer }) => {
   const handlesubmit = async (event) => {
     event.preventDefault()
     const playername = inputValue
+
+    if (playername.length < 3) {
+      setError('Playername must be over 3 characters long')
+      return
+    }
+
     const player = await playerService.login(playername)
     setInputvalue('')
     setPlayer(player)
@@ -22,7 +29,8 @@ const PlayerLogin = ({ setPlayer }) => {
     <Form onSubmit={handlesubmit}>
       <Form.Field >
         <label>Player name</label>
-        <input onChange={handleChange} value={inputValue} placeholder='player name...' />
+        <input style={{ 'width': 200 }} onChange={handleChange} value={inputValue} placeholder='player name...' />
+        <div>{errorMessage}</div>
       </Form.Field>
       <Button type='submit'>Start game</Button>
     </Form>
