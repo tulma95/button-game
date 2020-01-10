@@ -37,7 +37,7 @@ Example of .env
 MONGODB_URI=mongodb+srv://<user>:<password>@mongodb.net/db
 ```
 
-#### 5. Start application
+#### 4. Start application
 ```
 npm start
 ```
