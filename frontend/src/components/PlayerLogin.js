@@ -15,6 +15,7 @@ const PlayerLogin = ({ setPlayer }) => {
     const player = await playerService.login(playername)
     setInputvalue('')
     setPlayer(player)
+    window.localStorage.setItem('player', player.playername)
   }
 
   return (

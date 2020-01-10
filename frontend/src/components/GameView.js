@@ -5,12 +5,17 @@ import GameScreen from './GameScreen'
 const GameView = ({ player, setPlayer, button }) => {
   const [showHelp, setShowHelp] = useState(false)
 
+  const handleExitButton = () => {
+    window.localStorage.removeItem('player')
+    setPlayer(null)
+  }
+
   return (
     <div className='gameView'>
       <div className='gameViewHeader'>
         <div className='title'>Button Game</div>
         <div onClick={() => setShowHelp(!showHelp)} className='helpButton'>?</div>
-        <div onClick={() => setPlayer(null)} className='exitButton'></div>
+        <div onClick={handleExitButton} className='exitButton'></div>
       </div>
 
       {showHelp ?
