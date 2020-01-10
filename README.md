@@ -10,19 +10,19 @@ Application runs in heroku and database is in Atlas mongoDb cloud.
 
 
 ## How to install
-Clone the repository
+1. Clone the repository
 ```
 git clone https://github.com/tulma95/button-game
 ```
 
-Move to repository install dependencies and build project
+2. Move to repository, install dependencies and build project
 ```
 cd button-game
 npm install
 npm run build
 ```
 
-Make .env file
+3. Make .env file
 ```
 touch .env
 ```
@@ -37,7 +37,7 @@ Example of .env
 MONGODB_URI=mongodb+srv://<user>:<password>@mongodb.net/db
 ```
 
-Start application
+5. Start application
 ```
 npm start
 ```
