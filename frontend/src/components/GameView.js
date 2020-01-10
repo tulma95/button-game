@@ -21,14 +21,11 @@ const GameView = ({ player, setPlayer, button }) => {
       {showHelp ?
         <HelpScreen
           setShowHelp={setShowHelp} />
-
         : <GameScreen
           player={player}
           setPlayer={setPlayer}
           button={button} />
       }
-
-
     </div >
   )
 }

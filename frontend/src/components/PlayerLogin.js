@@ -15,7 +15,7 @@ const PlayerLogin = ({ setPlayer }) => {
     const playername = inputValue
 
     if (playername.length < 3) {
-      setError('Playername must be over 3 characters long')
+      setError('Playername must be atleast 3 characters long')
       return
     }
 
